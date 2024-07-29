@@ -14,7 +14,16 @@ dotenv.config({
     path: "./env"
 });
 
-connectDB();
+connectDB()
+.then(()=>{
+    app.listen(process.env.PORT || 8000 , ()=>{
+        console.log("server is running")
+    })
+})
+.catch((err)=>{
+    console.log("SERVER IS NOT RUNNING ", err);
+})
+
 
 //1st approach
 
